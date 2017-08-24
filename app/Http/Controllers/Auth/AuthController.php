@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+
 class AuthController extends Controller
 {
     /*
@@ -48,8 +49,9 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
+        // 帳號驗証
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|min:4',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
